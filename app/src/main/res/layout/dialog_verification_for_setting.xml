@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Verification"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textColor="#302f2f"
+                android:gravity="center"
+                android:layout_weight="1"
+               />
+            <TextView
+                android:id="@+id/tv_close"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:padding="1dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="#302f2f"
+                android:background="@drawable/border"
+                android:textAllCaps="false"
+                android:text="close"/>
+
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Password"
+                android:inputType="text"
+                android:textColor="#706e6e"
+                android:textStyle="normal"
+                android:paddingBottom="@dimen/activity_vertical_margin" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="150dp"
+            android:layout_height="32dp"
+            android:text="Submit"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="false"
+            android:background="@drawable/buttonshape1"
+            android:textStyle="normal"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ActiveAndroid3</string>
+    <string name="title_activity_switch_button">SwitchButtonActivity</string>
+    <string name="title_activity_demo">Demo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_modes">ModesActivity</string>
+    <string name="title_activity_main2">MainActivity2</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="selectRoom">Select Room</string>
+    <string name="addLight">Add Light</string>
+
+</resources>

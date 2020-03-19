@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <group android:checkableBehavior="none"
+
+        android:id="@+id/g_nav_home">
+
+        <item
+            android:id="@+id/nav_home"
+            app:actionViewClass="android.widget.TextView"
+            android:title="Home" />
+    </group>
+
+    <group android:checkableBehavior="none"
+        android:id="@+id/g_nav_notification">
+
+        <item
+            android:id="@+id/nav_notification"
+            app:actionViewClass="android.widget.TextView"
+            android:title="Notification" />
+    </group>
+
+    <group android:checkableBehavior="none"
+        android:id="@+id/g_nav_settings">
+        <item
+            android:id="@+id/nav_settings"
+            app:actionViewClass="android.widget.TextView"
+            android:title="Setting" />
+    </group>
+
+    <group android:checkableBehavior="none"
+        android:id="@+id/g_nav_help">
+        <item
+            android:id="@+id/nav_help"
+            app:actionViewClass="android.widget.TextView"
+            android:title="Help" />
+    </group>
+
+    <group android:checkableBehavior="none"
+        android:id="@+id/g_nav_share">
+        <item
+            android:id="@+id/nav_share"
+            app:actionViewClass="android.widget.TextView"
+            android:title="Share" />
+    </group>
+
+    <group android:checkableBehavior="none"
+        android:id="@+id/g_nav_logout">
+        <item
+            android:id="@+id/nav_logout"
+            app:actionViewClass="android.widget.TextView"
+            android:title="Logout" />
+    </group>
+
+    <!--<group android:checkableBehavior="none"-->
+        <!--android:id="@+id/g">-->
+        <!--<item-->
+            <!--android:id="@+id/n"-->
+            <!--android:title="Home" />-->
+    <!--</group>-->
+
+    <!--<group android:checkableBehavior="none"-->
+        <!--android:id="@+id/g1">-->
+        <!--<item-->
+            <!--android:id="@+id/n1"-->
+            <!--app:actionViewClass="android.widget.TextView"-->
+            <!--android:title="Notification" />-->
+    <!--</group>-->
+
+    <!--<group android:checkableBehavior="none"-->
+        <!--android:id="@+id/g2">-->
+        <!--<item-->
+            <!--android:id="@+id/n2"-->
+            <!--app:actionViewClass="android.widget.TextView"-->
+            <!--android:title="Setting" />-->
+    <!--</group>-->
+
+    <!--<group android:checkableBehavior="none"-->
+        <!--android:id="@+id/g3">-->
+        <!--<item-->
+            <!--android:id="@+id/n3"-->
+            <!--app:actionViewClass="android.widget.TextView"-->
+            <!--android:title="Help" />-->
+    <!--</group>-->
+
+
+    <!--<group android:checkableBehavior="none">-->
+
+    <!--<item-->
+    <!--android:id="@+id/nav_home"-->
+    <!--android:title="Home" />-->
+    <!--<item-->
+    <!--android:id="@+id/nav_notification"-->
+    <!--app:actionViewClass="android.widget.TextView"-->
+    <!--android:title="Notification" />-->
+    <!--<item-->
+    <!--android:id="@+id/nav_settings"-->
+    <!--app:actionViewClass="android.widget.TextView"-->
+    <!--android:title="Setting" />-->
+
+    <!--<item-->
+    <!--android:id="@+id/nav_help"-->
+    <!--app:actionViewClass="android.widget.TextView"-->
+    <!--android:title="Help" />-->
+
+    <!--<item-->
+    <!--android:id="@+id/nav_share"-->
+    <!--app:actionViewClass="android.widget.TextView"-->
+    <!--android:title="Share" />-->
+
+    <!--<item-->
+    <!--android:id="@+id/nav_logout"-->
+    <!--app:actionViewClass="android.widget.TextView"-->
+    <!--android:title="Logout" />-->
+    <!--</group>-->
+
+
+
+</menu>
+

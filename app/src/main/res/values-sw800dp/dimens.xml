@@ -1,0 +1,53 @@
+<resources>
+
+    //   FAB BUTTON
+    <dimen name="fab_width">55dp</dimen>
+    <dimen name="fab_height">55dp</dimen>
+    <dimen name="flex_width">180dp</dimen>
+    <dimen name="flex_height">150dp</dimen>
+
+    <dimen name="flex_width_main">165dp</dimen>
+    <dimen name="main_flex_marginTop">8dp</dimen>
+    <dimen name="main_flex_marginRight">4dp</dimen>
+    <dimen name="main_flex_marginBottom">4dp</dimen>
+    <dimen name="main_flex_marginLeft">8dp</dimen>
+
+    // TEXTVIEW TITLE / SUBTITLE
+    <dimen name="tv_subtitle">19sp</dimen>
+    <dimen name="tv_title">21sp</dimen>
+    <dimen name="tv_status">17sp</dimen>
+
+
+    // BACK ARROW WIDTH/HEIGHT
+    <dimen name="back_arrow_width">30dp</dimen>
+    <dimen name="back_arrow_height">30dp</dimen>
+
+
+    //  HEADER TITLE/SUBTITLE SIZE
+    <dimen name="header_subtitle_size">19sp</dimen>
+    <dimen name="header_title_size">23sp</dimen>
+    <dimen name="header_email_size">17sp </dimen>
+    <dimen name="navigation_header_width">500dp</dimen>
+    <dimen name="btn_submit_height">45dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+
+
+    <dimen name="card_view_margin_bottom">0dp</dimen>
+    <dimen name="card_view_margin_top">8dp</dimen>
+
+    <dimen name="title_padding">10dp</dimen>
+
+    <dimen name="gallary_icon_height_width">100dp</dimen>
+
+    <dimen name="img_show_width">500dp</dimen>
+    <dimen name="img_show_height">340dp</dimen>
+    <dimen name="nav_header_iv_width">100dp</dimen>
+    <dimen name="item_offset">2dp</dimen>
+
+
+</resources>

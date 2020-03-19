@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--android:layout_width="match_parent"-->
+<!--android:id="@+id/top_ll"-->
+<!--android:layout_height="match_parent"-->
+<!--android:orientation="vertical"-->
+<!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+<android.support.v7.widget.CardView
+    android:id="@+id/ly_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/cardView"
+    >
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:cardCornerRadius="5dp"-->
+    <!--app:cardElevation="8dp"-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:id="@+id/ll_main"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_room_name"
+            android:text="Room Name"
+            android:padding="8dp"
+            android:textSize="@dimen/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--<ListView-->
+                <!--android:id="@+id/listView"-->
+                <!--style="@style/MatchWrap"-->
+                <!--android:paddingRight="@dimen/card_view_margin_top"-->
+                <!--android:dividerHeight="18dp"-->
+                <!--android:divider="@android:color/transparent"-->
+                <!--android:scrollbars="none"-->
+                <!--android:smoothScrollbar="false"-->
+                <!--android:scrollingCache="false"-->
+                <!--android:animationCache="false"-->
+                <!--/>-->
+
+            <android.support.v7.widget.RecyclerView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/recycler_view_inside_adapter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--<ListView-->
+    <!--android:id="@+id/listView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:paddingRight="@dimen/card_view_margin_top"-->
+    <!--android:divider="@android:color/transparent"-->
+    <!--android:scrollbars="none" />-->
+
+
+
+    <!--<include layout="@layout/listlayout"></include>-->
+    <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
+</android.support.v7.widget.CardView>

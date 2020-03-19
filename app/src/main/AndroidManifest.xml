@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.lenovo.activeandroid3">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".application.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="Home Automation"
+        android:roundIcon="@drawable/icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon,android:label">
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="MyDatabase.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.example.lenovo.activeandroid3.model.Rooms , com.example.lenovo.activeandroid3.model.SwitchBoard   , com.example.lenovo.activeandroid3.model.SwitchButton  , com.example.lenovo.activeandroid3.model.Mode , com.example.lenovo.activeandroid3.model.ModeOnOf , com.example.lenovo.activeandroid3.model.Mobile" />
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="Home Automation"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".activity.SwitchBoardActivity"
+            android:label="Switch Boards"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <!-- android:theme="@style/AppTheme.NoActionBar"> -->
+        <!-- android:label="@string/title_activity_switch_button" -->
+        <activity
+            android:name=".activity.SwitchButtonActivity"
+            android:label="Switch Buttons"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.SplashScreen"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.AdminMainActivity"
+            android:label="Home Automation"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBa"/>
+
+        <activity android:name=".activity.v1.activity.CreateAccountActivity"
+            android:theme="@style/AppTheme.NoActionBa"></activity>
+
+
+        <activity
+            android:name=".activity.ModesDetailActivity"
+            android:label="Modes Detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ModesActivity"
+            android:label="Modes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.TabActivity"
+            android:label="Switch Boards"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.DynamicRadioActivity" />
+        <activity
+            android:name=".activity.AddRoomImageActivity"
+            android:label="Room Image"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.v1.activity.V1MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!-- <activity -->
+        <!-- android:name=".activity.MainActivity" -->
+        <!-- android:label="@string/title_activity_main" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
+
+        <activity android:name=".activity.v1.activity.DemoModeActivity" />
+
+    </application>
+
+</manifest>

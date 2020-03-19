@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingTop="4dp"
+    android:background="#fff"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/tv_name"-->
+        <!--android:layout_weight="7"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:text="Switch Board Name"-->
+        <!--android:textSize="25dp" />-->
+        <TextView
+            android:id="@+id/tv_name"
+            android:text="Switch Button Name"
+            style="@style/SubTitle"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:paddingLeft="6dp"
+            android:layout_gravity="center"
+            />
+
+
+        <!--<CheckBox-->
+        <!--android:id="@+id/switch1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="4dp"-->
+        <!--android:layout_gravity="start"-->
+        <!--android:gravity="start"/>-->
+
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_weight="1.5"
+            android:layout_marginRight="4dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:gravity="start" />
+
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/ll_edit_delete_btn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="end"-->
+        <!--android:layout_marginTop="0dp"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_edit"-->
+            <!--android:layout_width="22dp"-->
+            <!--android:layout_height="23dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:background="@drawable/edit1"/>-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_delete"-->
+            <!--android:layout_width="18dp"-->
+            <!--android:layout_height="21dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:background="@drawable/deletd_red"/>-->
+    <!--</LinearLayout>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:background="#d8d8d8"></View>
+
+</LinearLayout>

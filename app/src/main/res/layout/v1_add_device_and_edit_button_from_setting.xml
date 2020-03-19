@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+    <include layout="@layout/dialog_toolbar"/>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_add"-->
+            <!--android:layout_width="70dp"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_marginRight="6dp"-->
+            <!--android:background="@drawable/buttonshape1"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:text="Save"-->
+            <!--android:textSize="17sp"-->
+            <!--android:fontFamily="sans-serif-condensed"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textStyle="normal"-->
+            <!--android:textColor="#ffffff"/>-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/et_add_light"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:hint="Add Light"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:layout_toLeftOf="@id/btn_add" />-->
+    <!--</RelativeLayout>-->
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#FFC2C3C4"></View>-->
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recycler_view_add_light_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:clipToPadding="false" />
+</LinearLayout>

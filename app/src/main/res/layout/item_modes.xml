@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:flexDirection="column"
+    android:id="@+id/flexLayout_modes"
+
+    app:justifyContent="center"
+    app:flexWrap="wrap" >
+
+    <!---->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_buttonName"
+            android:text="Mode Name"
+            style="@style/SubTitle"
+            android:layout_width="0dp"
+            android:layout_weight="6"
+            android:paddingLeft="6dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btn_on"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:background="@drawable/transparent_btn"
+            android:layout_height="33dp"
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+            android:text="ON"/>
+
+
+        <Button
+            android:id="@+id/btn_off"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:background="@drawable/transparent_btn"
+            android:layout_height="33dp"
+            android:layout_marginLeft="10dp"
+
+            android:textStyle="normal"
+            android:fontFamily="sans-serif-condensed"
+
+            android:text="OFF"/>
+
+        <!--<Switch-->
+        <!--android:id="@+id/switch_mode"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="2"-->
+        <!--android:layout_marginRight="1dp"-->
+        <!--android:layout_height="wrap_content" />-->
+
+    </LinearLayout>
+
+    <!--</LinearLayout>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+
+        android:background="#cccccc"></View>
+
+</com.google.android.flexbox.FlexboxLayout>

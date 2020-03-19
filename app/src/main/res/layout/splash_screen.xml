@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/splash_screen_linear_layout"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/iv_splash_screen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_pBar"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="match_parent">
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Loading "-->
+            <!--android:textSize="22sp"-->
+            <!--android:textColor="@android:color/black"/>-->
+        <ProgressBar
+            android:id="@+id/pBar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"/>
+        <!--<com.eyalbira.loadingdots.LoadingDots-->
+            <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+
+            <!--app:LoadingDots_auto_play="true"-->
+
+            <!--app:LoadingDots_dots_color="@android:color/holo_blue_light"-->
+            <!--app:LoadingDots_dots_count="4"-->
+            <!--app:LoadingDots_dots_size="8dp"-->
+            <!--app:LoadingDots_dots_space="1.5dp"-->
+
+            <!--app:LoadingDots_loop_duration="800"-->
+            <!--app:LoadingDots_loop_start_delay="100"-->
+
+            <!--app:LoadingDots_jump_duration="200"-->
+            <!--app:LoadingDots_jump_height="6dp"/>-->
+
+        <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        style="@style/AVLoadingIndicatorView"
+        android:visibility="visible"
+        app:indicatorName="BallClipRotateMultipleIndicator"
+        app:indicatorColor="@android:color/holo_blue_light"
+        />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

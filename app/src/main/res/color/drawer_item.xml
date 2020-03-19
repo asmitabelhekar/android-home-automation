@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#006080" android:state_checked="true" />
+    <item android:color="#ffffff" />
+</selector>
+
+
+    <!--red color B22222-->
+    <!--check in    #006080-->
