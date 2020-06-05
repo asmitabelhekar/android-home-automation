@@ -67,8 +67,12 @@ public class RoomInsideDialogAdapter  extends RecyclerView.Adapter<RecyclerView.
     ImageView iv_button_image ;
     int imageValue ;
 
-    int[] buttonOffImagearray = { R.drawable.light , R.drawable.spotlight ,
-            R.drawable.lamp ,R.drawable.tube ,R.drawable.fan };
+//    int[] buttonOffImagearray = { R.drawable.light , R.drawable.spotlight ,
+//            R.drawable.lamp ,R.drawable.tube ,R.drawable.fan };
+
+    int[] buttonOffImagearray = {  R.drawable.threepin , R.drawable.air, R.drawable.doorball , R.drawable.music,
+            R.drawable.sep_box ,R.drawable.table_fan ,R.drawable.tv, R.drawable.water_pur };
+
     int roomPosition ;
 
     Socket   client;
