@@ -160,6 +160,8 @@ public class ModeFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
 
     private void modeOnOffClick(int position) {
 
+        Log.e("checking here",""+position);
+
         this.position = position ;
         ModesActivityDbModel singleItem = modeList.get(position);
         Mode mode = getSingleModeById( singleItem.getModeId() ) ;

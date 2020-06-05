@@ -1355,6 +1355,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
     {
         try {
 
+            this.getSupportFragmentManager().popBackStack();
             toolbar.setTitle( toolbatTitle );
             Log.e("inside on","openSettingFragment") ;
             getSupportFragmentManager().beginTransaction()

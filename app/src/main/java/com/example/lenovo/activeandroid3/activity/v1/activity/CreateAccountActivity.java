@@ -37,11 +37,12 @@ public class CreateAccountActivity extends AppCompatActivity {
         btn_create_account = ( Button )findViewById( R.id.btn_create_account );
 
 
-        et_first_name.setText("kiran");
-        et_last_name.setText("kokate");
-        et_email_address.setText("kirankokate031@gmail.com");
-        et_password.setText("kiran");
-        et_gender.setText("Male");
+//        et_first_name.setText("kiran");
+//        et_last_name.setText("kokate");
+//        et_email_address.setText("kirankokate031@gmail.com");
+//        et_password.setText("kiran");
+//        et_gender.setText("Male");
+
 
         btn_create_account.setOnClickListener(new View.OnClickListener() {
             @Override

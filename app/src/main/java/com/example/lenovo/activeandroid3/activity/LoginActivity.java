@@ -39,8 +39,8 @@ public class LoginActivity extends AppCompatActivity
         et_password = ( EditText )findViewById( R.id.et_password ) ;
 
 
-        et_email_address.setText("kirankokate031@gmail.com");
-        et_password.setText("kiran");
+//        et_email_address.setText("kirankokate031@gmail.com");
+//        et_password.setText("kiran");
 
         final SharedPreferences  sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
 //        String    isTableCreated = sharedPref.getString("isTableCreated", "");

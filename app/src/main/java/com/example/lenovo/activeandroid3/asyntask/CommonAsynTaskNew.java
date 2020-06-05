@@ -51,7 +51,7 @@ public class CommonAsynTaskNew extends AsyncTask<Void, Void, String> {
 
         try {
 
-//            Log.e(TAG, "doInBackground: " );
+            Log.e(TAG, "doInBackground: " );
 
 
             client = new Socket(IP, 8888);
@@ -73,6 +73,7 @@ public class CommonAsynTaskNew extends AsyncTask<Void, Void, String> {
 //            Log.e("excep in 1st attempt", TAG + e.getMessage() );
             closeAllConnecton();
 
+
         }finally {
             closeAllConnecton();
         }
@@ -90,8 +91,6 @@ public class CommonAsynTaskNew extends AsyncTask<Void, Void, String> {
                 e.printStackTrace();
             }
         }
-
-
 
         if( printStream != null )
             printStream.close();
