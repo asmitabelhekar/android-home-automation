@@ -45,7 +45,7 @@ public class NotificationFragmentAdapter extends RecyclerView.Adapter<RecyclerVi
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 5;
     }
 
     //    Classes

@@ -64,6 +64,7 @@ public class NotificationFragment extends Fragment {
             flexbox_no_data_available.setVisibility( View.GONE ) ;
             iv_no_data_image = (ImageView)rootview.findViewById( R.id.v2_no_data_image ) ;
             tv_no_data_title=(TextView)rootview.findViewById( R.id.v2_tv_no_data_title ) ;
+            tv_no_data_title.setText("No data available");
 
             layout_manager = new LinearLayoutManager( getActivity() ) ;
             this.recyclerView.setLayoutManager( layout_manager );

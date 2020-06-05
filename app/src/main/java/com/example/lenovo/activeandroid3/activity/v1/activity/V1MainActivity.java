@@ -1,6 +1,7 @@
 package com.example.lenovo.activeandroid3.activity.v1.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.wifi.WifiInfo;
@@ -38,7 +39,9 @@ import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
 
 import com.example.lenovo.activeandroid3.R;
+import com.example.lenovo.activeandroid3.activity.LoginActivity;
 import com.example.lenovo.activeandroid3.activity.ResponseInterfaceNew;
+import com.example.lenovo.activeandroid3.activity.SplashScreen;
 import com.example.lenovo.activeandroid3.activity.v1.fragment.ModeFragments;
 import com.example.lenovo.activeandroid3.activity.v1.fragment.NotificationFragment;
 import com.example.lenovo.activeandroid3.activity.v1.fragment.RoomFragment;
@@ -306,6 +309,12 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
             navNotification.setText("" + 5);
 
 
+//            nav_notification
+//                    nav_settings
+//            nav_help
+//                    nav_share
+//            nav_logout
+
             navigationView.setNavigationItemSelectedListener( new NavigationView.OnNavigationItemSelectedListener()
             {
                 @Override
@@ -326,6 +335,27 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
                         setAllItemOfNavigationViewToFalse();
                         navigationView.getMenu().getItem(0).setChecked(true);
                         setPagerFragment( 0 ) ;
+
+                    }else if(id ==  R.id.nav_logout ){
+
+                        Intent veriy = new Intent(V1MainActivity.this, LoginActivity.class);
+                        startActivity(veriy);
+                        V1MainActivity.this.finish();
+
+
+                    }else if(id ==  R.id.nav_share ){
+
+//                        Intent veriy = new Intent(V1MainActivity.this, LoginActivity.class);
+//                        startActivity(veriy);
+//                        V1MainActivity.this.finish();
+
+
+                    }else if(id ==  R.id.nav_help ){
+
+//                        Intent veriy = new Intent(V1MainActivity.this, LoginActivity.class);
+//                        startActivity(veriy);
+//                        V1MainActivity.this.finish();
+
 
                     } else if (id == R.id.nav_settings)
                     {
@@ -409,7 +439,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 
                         setAllItemOfNavigationViewToFalse();
 
-                        navigationView.getMenu().getItem(2).setChecked(true);
+                        navigationView.getMenu().getItem(1).setChecked(true);
 
                         openSettingFragment(new NotificationFragment() , " Notification ") ;
                     }
