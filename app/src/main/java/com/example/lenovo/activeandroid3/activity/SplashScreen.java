@@ -276,15 +276,15 @@ public class SplashScreen extends Activity implements ResponseInterfaceNew {
         threadList = new ArrayList<>();
 
         int a=0;
-        int b=4;
+        int b=2;
 
-        for (int i = 0 ; i <= 50 ; i++ ) {
+        for (int i = 0 ; i <= 84 ; i++ ) {
             Runnable r = new MyRunnable(a,b , this);
             threadList.add( new Thread(r)) ;
             threadList.get(i).start();
 
             a = b +1 ;
-            b = a + 4;
+            b = a + 2;
         }
 
         Thread t11 = new Thread() {
