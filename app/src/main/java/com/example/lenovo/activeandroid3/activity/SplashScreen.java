@@ -125,20 +125,20 @@ public class SplashScreen extends Activity implements ResponseInterfaceNew {
     String isTableCreated = "" ;
 //    InputStream in;
 
-    String[] roomNamesArray = {"Hall", "Kitchen" , "Master Bedroom" ,"Bedroom" ,"Bathroom" , "Balcony" ,"Pooja room" ,"Servent room"} ;
-    int[] roomOnOffArray = {1 ,1,1,0,1,0,0,0} ;
+    String[] roomNamesArray = {"Hall", "Kitchen" , "Master Bedroom" ,"Bedroom" ,"Bathroom" , "Balcony" ,"Pooja room" ,"Servent room","Office room","Conference room"} ;
+    int[] roomOnOffArray = {1 ,1,1,0,1,0,0,0,0,0} ;
     Rooms room;
 
     public List<Rooms> roomList = new ArrayList<>();
 
     //Room home page image
     int[]  roomImageArray = { R.drawable.hall_room  , R.drawable.kitchen_room, R.drawable.master_bedroom , R.drawable.bedroom_room
-            , R.drawable.bathroom_room , R.drawable.balcony_room , R.drawable.pooja_room  ,R.drawable.servent_room} ;
+            , R.drawable.bathroom_room , R.drawable.balcony_room , R.drawable.pooja_room  ,R.drawable.servent_room,R.drawable.hall_room,R.drawable.hall_room} ;
 
     //Add  Room images
     int[]  addRoomImages = { R.drawable.add_room_hall  , R.drawable.add_room_kitchen, R.drawable.add_room_master_bedroom ,
             R.drawable.add_room_bedroom
-            , R.drawable.add_room_bathroom , R.drawable.add_room_bedroom , R.drawable.add_room_pooja_hall  , R.drawable.add_room_servant_room} ;
+            , R.drawable.add_room_bathroom , R.drawable.add_room_bedroom , R.drawable.add_room_pooja_hall  , R.drawable.add_room_servant_room, R.drawable.add_room_hall, R.drawable.add_room_hall} ;
 
 
     // Button
@@ -150,12 +150,14 @@ public class SplashScreen extends Activity implements ResponseInterfaceNew {
 //    int[] buttonOffImagearray = { R.drawable.light , R.drawable.light, R.drawable.spotlight , R.drawable.spotlight,
 //            R.drawable.lamp ,R.drawable.tube ,R.drawable.fan, R.drawable.tube };
 
-    String[] buttonNameArray = { "3 Pin" , "Air" , "Doorbell" ,"Music", "Set box" , "Table Fan" ,"TV" , "Water Purifier"} ;
-    boolean[] buttonOnOffArray = { false  , false  , false , false , false , false , false, false } ;
+    String[] buttonNameArray = { "LED" , "LED 02" , "Spotlight" ,"Spotlight 2", "Lamp" , "Tube" ,"Fan" , "Tube 2","3 Pin" , "Air" , "Doorbell" ,"Music", "Set box" , "Table Fan" ,"TV" , "Water Purifier"} ;
+    boolean[] buttonOnOffArray = { false  , false  , false , false , false , false , false, false ,false  , false  , false , false , false , false , false, false } ;
 
-    int[] buttonOnImagearray = { R.drawable.threepin_click , R.drawable.air_click , R.drawable.doorball_click , R.drawable.music_click,
+    int[] buttonOnImagearray = { R.drawable.light_click , R.drawable.light_click , R.drawable.spotlight_clickt , R.drawable.spotlight_clickt,
+          R.drawable.lamp_click ,R.drawable.tube_click ,R.drawable.fan_click, R.drawable.tube_click,R.drawable.threepin_click , R.drawable.air_click , R.drawable.doorball_click , R.drawable.music_click,
             R.drawable.sep_box_click ,R.drawable.table_fan_click ,R.drawable.tv_click, R.drawable.water_pur_click };
-    int[] buttonOffImagearray = { R.drawable.threepin , R.drawable.air, R.drawable.doorball , R.drawable.music,
+    int[] buttonOffImagearray = { R.drawable.light , R.drawable.light, R.drawable.spotlight , R.drawable.spotlight,
+           R.drawable.lamp ,R.drawable.tube ,R.drawable.fan, R.drawable.tube,R.drawable.threepin , R.drawable.air, R.drawable.doorball , R.drawable.music,
             R.drawable.sep_box ,R.drawable.table_fan ,R.drawable.tv, R.drawable.water_pur };
 
 
@@ -231,7 +233,7 @@ public class SplashScreen extends Activity implements ResponseInterfaceNew {
                     SwitchBoard switchBoard =  readSingleBoardById( boardId )  ;
                     Log.e(TAG, "onCreate: switchBoard "+switchBoard.BoardName +"  "+switchBoard.getId() );
 
-                    for (int i = 0; i < 8 ; i++ ) {
+                    for (int i = 0; i < buttonNameArray.length ; i++ ) {
 //                            String[] buttonNameArray = { "LED" , "LED 02" , "Spotlight" ,"Spotlight 2", "Lamp" , "Tube" ,"Fan" , "Tube 2"} ;
                         String buttonName = buttonNameArray[i] ;
                         Date timestamp = Calendar.getInstance().getTime();
