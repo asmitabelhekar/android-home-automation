@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -194,6 +195,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
     String roomId;
     String roomPosition;
     String switchPosition;
+    FloatingActionButton fabAllBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -211,6 +213,15 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 
         toolbar = ( Toolbar ) findViewById( R.id.activity_v1_main_toolbar ) ;
         frameLayout = ( FrameLayout )findViewById( R.id.activity_v1_main_frame);
+        fabAllBtn = (FloatingActionButton) findViewById(R.id.fab_all_btn);
+        fabAllBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getAllButtonFromDbAndOffThem() ;
+
+            }
+        });
 
         setSupportActionBar( toolbar ) ;
         context = this ;
@@ -1489,6 +1500,16 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
             button.is_on = false;
             button.save();
         }
+
+//        String statusRequest = "*STS," + switchBoard.getId() + "#";
+//        CommonAsynTaskNew asynTask = new CommonAsynTaskNew(context, statusRequest, my_object, MethodSelection.STATUS, switchBoard.IP);
+//        if (Build.VERSION.SDK_INT >= 11/*HONEYCOMB*/) {
+//            asynTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+//        } else {
+//            asynTask.execute();
+//        }
+
+        Log.e("button oof","off");
     }
 
     private List<SwitchButton> getAllButton()
