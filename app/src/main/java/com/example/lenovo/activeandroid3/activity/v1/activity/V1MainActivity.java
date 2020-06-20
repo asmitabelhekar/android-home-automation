@@ -33,8 +33,10 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Select;
@@ -195,7 +197,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
     String roomId;
     String roomPosition;
     String switchPosition;
-    FloatingActionButton fabAllBtn;
+    Button fabAllBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -213,7 +215,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 
         toolbar = ( Toolbar ) findViewById( R.id.activity_v1_main_toolbar ) ;
         frameLayout = ( FrameLayout )findViewById( R.id.activity_v1_main_frame);
-        fabAllBtn = (FloatingActionButton) findViewById(R.id.fab_all_btn);
+        fabAllBtn = (Button) findViewById(R.id.fab_all_btn);
         fabAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1500,6 +1502,8 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
             button.is_on = false;
             button.save();
         }
+
+        Toast.makeText(V1MainActivity.this, "All lights off "  , Toast.LENGTH_SHORT).show();
 
 //        String statusRequest = "*STS," + switchBoard.getId() + "#";
 //        CommonAsynTaskNew asynTask = new CommonAsynTaskNew(context, statusRequest, my_object, MethodSelection.STATUS, switchBoard.IP);
