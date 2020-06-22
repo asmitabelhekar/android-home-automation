@@ -142,23 +142,23 @@ public class SplashScreen extends Activity implements ResponseInterfaceNew {
 
 
     // Button
-//    String[] buttonNameArray = { "LED" , "LED 02" , "Spotlight" ,"Spotlight 2", "Lamp" , "Tube" ,"Fan" , "Tube 2"} ;
-//    boolean[] buttonOnOffArray = { false  , false  , false , false , false , false , false, false } ;
-//
-//    int[] buttonOnImagearray = { R.drawable.light_click , R.drawable.light_click , R.drawable.spotlight_clickt , R.drawable.spotlight_clickt,
-//            R.drawable.lamp_click ,R.drawable.tube_click ,R.drawable.fan_click, R.drawable.tube_click };
-//    int[] buttonOffImagearray = { R.drawable.light , R.drawable.light, R.drawable.spotlight , R.drawable.spotlight,
-//            R.drawable.lamp ,R.drawable.tube ,R.drawable.fan, R.drawable.tube };
-
-    String[] buttonNameArray = { "LED" , "LED 02" , "Spotlight" ,"Spotlight 2", "Lamp" , "Tube" ,"Fan" , "Tube 2","3 Pin" , "Air" , "Doorbell" ,"Music", "Set box" , "Table Fan" ,"TV" , "Water Purifier"} ;
-    boolean[] buttonOnOffArray = { false  , false  , false , false , false , false , false, false ,false  , false  , false , false , false , false , false, false } ;
+    String[] buttonNameArray = { "LED" , "LED 02" , "Spotlight" ,"Spotlight 2", "Lamp" , "Tube" ,"Fan" , "Tube 2"} ;
+    boolean[] buttonOnOffArray = { false  , false  , false , false , false , false , false, false } ;
 
     int[] buttonOnImagearray = { R.drawable.light_click , R.drawable.light_click , R.drawable.spotlight_clickt , R.drawable.spotlight_clickt,
-          R.drawable.lamp_click ,R.drawable.tube_click ,R.drawable.fan_click, R.drawable.tube_click,R.drawable.threepin_click , R.drawable.air_click , R.drawable.doorball_click , R.drawable.music_click,
-            R.drawable.sep_box_click ,R.drawable.table_fan_click ,R.drawable.tv_click, R.drawable.water_pur_click };
+            R.drawable.lamp_click ,R.drawable.tube_click ,R.drawable.fan_click, R.drawable.tube_click };
     int[] buttonOffImagearray = { R.drawable.light , R.drawable.light, R.drawable.spotlight , R.drawable.spotlight,
-           R.drawable.lamp ,R.drawable.tube ,R.drawable.fan, R.drawable.tube,R.drawable.threepin , R.drawable.air, R.drawable.doorball , R.drawable.music,
-            R.drawable.sep_box ,R.drawable.table_fan ,R.drawable.tv, R.drawable.water_pur };
+            R.drawable.lamp ,R.drawable.tube ,R.drawable.fan, R.drawable.tube };
+
+//    String[] buttonNameArray = { "LED" , "LED 02" , "Spotlight" ,"Spotlight 2", "Lamp" , "Tube" ,"Fan" , "Tube 2","3 Pin" , "Air" , "Doorbell" ,"Music", "Set box" , "Table Fan" ,"TV" , "Water Purifier"} ;
+//    boolean[] buttonOnOffArray = { false  , false  , false , false , false , false , false, false ,false  , false  , false , false , false , false , false, false } ;
+//
+//    int[] buttonOnImagearray = { R.drawable.light_click , R.drawable.light_click , R.drawable.spotlight_clickt , R.drawable.spotlight_clickt,
+//          R.drawable.lamp_click ,R.drawable.tube_click ,R.drawable.fan_click, R.drawable.tube_click,R.drawable.threepin_click , R.drawable.air_click , R.drawable.doorball_click , R.drawable.music_click,
+//            R.drawable.sep_box_click ,R.drawable.table_fan_click ,R.drawable.tv_click, R.drawable.water_pur_click };
+//    int[] buttonOffImagearray = { R.drawable.light , R.drawable.light, R.drawable.spotlight , R.drawable.spotlight,
+//           R.drawable.lamp ,R.drawable.tube ,R.drawable.fan, R.drawable.tube,R.drawable.threepin , R.drawable.air, R.drawable.doorball , R.drawable.music,
+//            R.drawable.sep_box ,R.drawable.table_fan ,R.drawable.tv, R.drawable.water_pur };
 
 
     @Override

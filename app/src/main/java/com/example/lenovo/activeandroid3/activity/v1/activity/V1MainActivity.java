@@ -125,24 +125,24 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 //    int[] buttonOffImagearray = { R.drawable.light , R.drawable.light, R.drawable.spotlight , R.drawable.spotlight,
 //            R.drawable.lamp ,R.drawable.tube ,R.drawable.fan, R.drawable.tube };
 
-//    String[] buttonNameArray = { "3 Pin" , "Air" , "Doorbell" ,"Music", "Set box" , "Table Fan" ,"TV" , "Water Purifier"} ;
-//    boolean[] buttonOnOffArray = { false  , false  , false , false , false , false , false, false } ;
-//
-//    int[] buttonOnImagearray = { R.drawable.threepin_click , R.drawable.air_click , R.drawable.doorball_click , R.drawable.music_click,
-//            R.drawable.sep_box_click ,R.drawable.table_fan_click ,R.drawable.tv_click, R.drawable.water_pur_click };
-//    int[] buttonOffImagearray = { R.drawable.threepin , R.drawable.air, R.drawable.doorball , R.drawable.music,
-//            R.drawable.sep_box ,R.drawable.table_fan ,R.drawable.tv, R.drawable.water_pur };
+    String[] buttonNameArray = { "3 Pin" , "Air" , "Doorbell" ,"Music", "Set box" , "Table Fan" ,"TV" , "Water Purifier"} ;
+    boolean[] buttonOnOffArray = { false  , false  , false , false , false , false , false, false } ;
 
-
-    String[] buttonNameArray = { "LED" , "LED 02" , "Spotlight" ,"Spotlight 2", "Lamp" , "Tube" ,"Fan" , "Tube 2","3 Pin" , "Air" , "Doorbell" ,"Music", "Set box" , "Table Fan" ,"TV" , "Water Purifier"} ;
-    boolean[] buttonOnOffArray = { false  , false  , false , false , false , false , false, false ,false  , false  , false , false , false , false , false, false } ;
-
-    int[] buttonOnImagearray = { R.drawable.light_click , R.drawable.light_click , R.drawable.spotlight_clickt , R.drawable.spotlight_clickt,
-            R.drawable.lamp_click ,R.drawable.tube_click ,R.drawable.fan_click, R.drawable.tube_click,R.drawable.threepin_click , R.drawable.air_click , R.drawable.doorball_click , R.drawable.music_click,
+    int[] buttonOnImagearray = { R.drawable.threepin_click , R.drawable.air_click , R.drawable.doorball_click , R.drawable.music_click,
             R.drawable.sep_box_click ,R.drawable.table_fan_click ,R.drawable.tv_click, R.drawable.water_pur_click };
-    int[] buttonOffImagearray = { R.drawable.light , R.drawable.light, R.drawable.spotlight , R.drawable.spotlight,
-            R.drawable.lamp ,R.drawable.tube ,R.drawable.fan, R.drawable.tube,R.drawable.threepin , R.drawable.air, R.drawable.doorball , R.drawable.music,
+    int[] buttonOffImagearray = { R.drawable.threepin , R.drawable.air, R.drawable.doorball , R.drawable.music,
             R.drawable.sep_box ,R.drawable.table_fan ,R.drawable.tv, R.drawable.water_pur };
+
+
+//    String[] buttonNameArray = { "LED" , "LED 02" , "Spotlight" ,"Spotlight 2", "Lamp" , "Tube" ,"Fan" , "Tube 2","3 Pin" , "Air" , "Doorbell" ,"Music", "Set box" , "Table Fan" ,"TV" , "Water Purifier"} ;
+//    boolean[] buttonOnOffArray = { false  , false  , false , false , false , false , false, false ,false  , false  , false , false , false , false , false, false } ;
+//
+//    int[] buttonOnImagearray = { R.drawable.light_click , R.drawable.light_click , R.drawable.spotlight_clickt , R.drawable.spotlight_clickt,
+//            R.drawable.lamp_click ,R.drawable.tube_click ,R.drawable.fan_click, R.drawable.tube_click,R.drawable.threepin_click , R.drawable.air_click , R.drawable.doorball_click , R.drawable.music_click,
+//            R.drawable.sep_box_click ,R.drawable.table_fan_click ,R.drawable.tv_click, R.drawable.water_pur_click };
+//    int[] buttonOffImagearray = { R.drawable.light , R.drawable.light, R.drawable.spotlight , R.drawable.spotlight,
+//            R.drawable.lamp ,R.drawable.tube ,R.drawable.fan, R.drawable.tube,R.drawable.threepin , R.drawable.air, R.drawable.doorball , R.drawable.music,
+//            R.drawable.sep_box ,R.drawable.table_fan ,R.drawable.tv, R.drawable.water_pur };
 
 
 
@@ -351,6 +351,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 
                     if (id == R.id.nav_home)
                     {
+                        fabAllBtn.setVisibility(View.VISIBLE);
                         mViewPager.setVisibility( View.VISIBLE ) ;
                         tabLayout.setVisibility( View.VISIBLE ) ;
                         frameLayout.setVisibility( View.GONE ) ;
@@ -361,14 +362,14 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
                         setPagerFragment( 0 ) ;
 
                     }else if(id ==  R.id.nav_logout ){
-
+                        fabAllBtn.setVisibility(View.GONE);
                         Intent veriy = new Intent(V1MainActivity.this, LoginActivity.class);
                         startActivity(veriy);
                         V1MainActivity.this.finish();
 
 
                     }else if(id ==  R.id.nav_share ){
-
+//                        fabAllBtn.setVisibility(View.GONE);
 //                        Intent veriy = new Intent(V1MainActivity.this, LoginActivity.class);
 //                        startActivity(veriy);
 //                        V1MainActivity.this.finish();
@@ -383,6 +384,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 
                     } else if (id == R.id.nav_settings)
                     {
+                        fabAllBtn.setVisibility(View.GONE);
                         Log.e("in","nav_settings");
                         Log.e("isChecked ", item.isChecked() +"" )  ;
 
@@ -456,7 +458,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
                     {
                         Log.e("in"," notification ");
                         Log.e("isChecked ", item.isChecked() +"" )  ;
-
+                        fabAllBtn.setVisibility(View.GONE);
                         mViewPager.setVisibility(View.GONE);
                         tabLayout.setVisibility(View.GONE);
                         frameLayout.setVisibility(View.VISIBLE);
@@ -1571,6 +1573,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 
     public void setPagerFragment( int a )
     {
+
         mViewPager.setCurrentItem( a ) ;
     }
 
