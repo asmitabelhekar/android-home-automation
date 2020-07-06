@@ -66,6 +66,7 @@ public class RoomInsideDialogAdapter  extends RecyclerView.Adapter<RecyclerView.
 
     ImageView iv_button_image ;
     int imageValue ;
+    int onImageValueN;
 
 //    int[] buttonOffImagearray = { R.drawable.light , R.drawable.spotlight ,
 //            R.drawable.lamp ,R.drawable.tube ,R.drawable.fan };
@@ -74,6 +75,10 @@ public class RoomInsideDialogAdapter  extends RecyclerView.Adapter<RecyclerView.
      int[] buttonOffImagearray = { R.drawable.light , R.drawable.spotlight,
             R.drawable.lamp ,R.drawable.fan, R.drawable.tube,R.drawable.threepin , R.drawable.air, R.drawable.doorball , R.drawable.music,
             R.drawable.sep_box ,R.drawable.table_fan ,R.drawable.tv, R.drawable.water_pur };
+
+    int[] buttonOnImagearray = {R.drawable.light_click , R.drawable.spotlight_clickt,
+            R.drawable.lamp_click ,R.drawable.fan_click, R.drawable.tube_click, R.drawable.threepin_click , R.drawable.air_click , R.drawable.doorball_click , R.drawable.music_click,
+            R.drawable.sep_box_click ,R.drawable.table_fan_click ,R.drawable.tv_click, R.drawable.water_pur_click };
 
 
 
@@ -208,6 +213,7 @@ public class RoomInsideDialogAdapter  extends RecyclerView.Adapter<RecyclerView.
         et_button_name.setText(switchButtonDbModel.getsButtonName() ) ;
         et_button_name.setSelection(et_button_name.getText().length());
         imageValue = switchButtonDbModel.getOffImage();
+        onImageValueN =  switchButtonDbModel.getOnImage();
         Glide.with(context).load(switchButtonDbModel.getOffImage() ).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
@@ -217,6 +223,8 @@ public class RoomInsideDialogAdapter  extends RecyclerView.Adapter<RecyclerView.
                 }
             }
         });
+
+        Log.e(TAG, "switchButton.getOnImage() : "+ onImageValueN+"");
 
         RecyclerView rv_eis = (RecyclerView)dialogView.findViewById(R.id.recycler_view_edit_image_selector);
         LinearLayoutManager layout_manager = new LinearLayoutManager( context );
@@ -236,6 +244,9 @@ public class RoomInsideDialogAdapter  extends RecyclerView.Adapter<RecyclerView.
             {
                 String newButtonName = et_button_name.getText().toString();
                 Log.e(TAG, "onClick imageValue : "+ imageValue+"");
+
+                Log.e(TAG, "onClick imageValue on  : "+ onImageValueN+"");
+
                 Log.e(TAG, "onClick newButtonName :  "+newButtonName);
 
                 SwitchButtonDbModel switchButton = roomButtonList.get(position);
@@ -245,7 +256,7 @@ public class RoomInsideDialogAdapter  extends RecyclerView.Adapter<RecyclerView.
                 button.is_on = switchButton.getOn();
                 button.OffImage = imageValue;
                 button.SwitchButtonName = newButtonName;
-                button.OnImage = switchButton.getOnImage();
+                button.OnImage = onImageValueN;
                 button.RoomId = switchButton.getRoomId();
                 button.SwitchButtonCreatedAt=switchButton.getsButtonCreatedAt();
                 button.SwitchButtonUpdatedat = Calendar.getInstance().getTime().getTime() ;
@@ -268,6 +279,7 @@ public class RoomInsideDialogAdapter  extends RecyclerView.Adapter<RecyclerView.
     {
         Log.e( TAG, "selectedImagePosition: "+buttonOffImagearray[position] +"" );
         imageValue = buttonOffImagearray[position] ;
+        onImageValueN = buttonOnImagearray[position];
         Glide.with( context ).load( imageValue ).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {

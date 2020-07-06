@@ -35,6 +35,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -197,7 +198,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
     String roomId;
     String roomPosition;
     String switchPosition;
-    Button fabAllBtn;
+    ImageButton fabAllBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -215,7 +216,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 
         toolbar = ( Toolbar ) findViewById( R.id.activity_v1_main_toolbar ) ;
         frameLayout = ( FrameLayout )findViewById( R.id.activity_v1_main_frame);
-        fabAllBtn = (Button) findViewById(R.id.fab_all_btn);
+        fabAllBtn = (ImageButton) findViewById(R.id.fab_all_btn);
         fabAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

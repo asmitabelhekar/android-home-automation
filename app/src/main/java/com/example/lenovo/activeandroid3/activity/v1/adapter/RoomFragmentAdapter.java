@@ -92,6 +92,8 @@ public class RoomFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
     RoomFragmentAdapter my_object = this;
     private int position;
 
+    boolean is_connection_active = false;
+
     public RoomFragmentAdapter( Context context ,  RoomFragment roomFragment )
     {
         this.context = context ;
@@ -269,6 +271,14 @@ public class RoomFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
         this.recycler_view_room_inside_dialog = (RecyclerView) dialogView.findViewById(R.id.recycler_view_room_inside_dialog );
 
 //        LinearLayout ll_tv_save = (LinearLayout)dialogView.findViewById(R.id.ll_tv_save );
+        TextView tv_active_status = (TextView) dialogView.findViewById(R.id.tv_active_status);
+
+        if(is_connection_active){
+            tv_active_status.setVisibility(View.VISIBLE);
+
+        }else{
+            tv_active_status.setVisibility(View.GONE);
+        }
         ImageView in_back_arrow = (ImageView)dialogView.findViewById( R.id.in_back_arrow );
         TextView tv_room_name_inside = ( TextView )dialogView.findViewById( R.id.tv_room_name_inside );
         TextView tv_anyText = ( TextView )dialogView.findViewById( R.id.tv_anyText );
@@ -334,6 +344,7 @@ public class RoomFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
     private void statusResponse(String response, String IP) {
 
         if (response != null) {
+            is_connection_active = true;
             Log.e(TAG, "statusResponse: "+IP +"  "+ response );
             String data1 = response.substring(response.indexOf(",") + 1);
             String deviceIdFromResponse = data1.substring(0, data1.indexOf(","));
@@ -367,6 +378,7 @@ public class RoomFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
             openRoom(position);
         } else {
             Log.e(TAG, "STATUS: status response is null");
+            is_connection_active = false;
             openRoom(position);
         }
 

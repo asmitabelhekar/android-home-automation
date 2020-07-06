@@ -31,6 +31,19 @@
             android:layout_marginLeft="18dp"
             android:textColor="#ffffffff" />
 
+<!--        <TextView-->
+<!--            android:id="@+id/tv_title1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Dialog title"-->
+<!--            android:textSize="17sp"-->
+<!--            android:layout_weight="7"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:textStyle="normal"-->
+<!--            android:layout_marginLeft="18dp"-->
+<!--            android:textColor="#ffffffff" />-->
+
         <!--<LinearLayout-->
         <!--android:id="@+id/ll_tv_save"-->
         <!--android:layout_width="match_parent"-->
@@ -38,6 +51,18 @@
         <!--android:gravity="end"-->
         <!--android:layout_marginRight="10dp"-->
         <!--android:layout_height="wrap_content">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_active_status"-->
+<!--            android:gravity="end"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:text="Any Text"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_weight="2"-->
+<!--            android:textColor="@color/navigationviewBackground"-->
+<!--            android:textStyle="normal"-->
+<!--            android:textSize="17sp"-->
+<!--            android:layout_height="wrap_content" />-->
 
         <TextView
             android:id="@+id/tv_anyText"
