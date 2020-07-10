@@ -77,6 +77,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.BrokenBarrierException;
 
 public class V1MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ResponseInterfaceNew {
 
@@ -1500,13 +1501,33 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
     // get all button from Db and Off them
     private void getAllButtonFromDbAndOffThem()
     {
-        List<SwitchButton> switchButtons = getAllButton();
-        for (SwitchButton button : switchButtons) {
-            button.is_on = false;
-            button.save();
-        }
+
 
         Toast.makeText(V1MainActivity.this, "All lights off "  , Toast.LENGTH_SHORT).show();
+
+        List<Rooms> allActiveRooms = getAllRoom();
+        List<SwitchButton> allButtonTotal = new ArrayList<>();
+        List<SwitchButton> currentlyONButtons =  new ArrayList<>();
+        List<SwitchButton> currentlyOFFButtons =  new ArrayList<>();
+
+        for (Rooms rooms: allActiveRooms )
+        {
+            List<SwitchButton> allButton = getAllButtonN(rooms.getId());
+            allButtonTotal.addAll(allButton);
+
+            List<SwitchButton> currentlyONButtonsLocal = getButtonsBasedOnIsOnFlag(true , rooms.getId() );
+            currentlyONButtons.addAll(currentlyONButtonsLocal);
+        }
+
+
+        ArrayList<Long> currentlyONButtonsId = new ArrayList<>();
+        for (SwitchButton switchButton:currentlyONButtons)
+        {
+            currentlyONButtonsId.add(switchButton.getId());
+        }
+
+
+        networkCallN(currentlyONButtonsId);
 
 //        String statusRequest = "*STS," + switchBoard.getId() + "#";
 //        CommonAsynTaskNew asynTask = new CommonAsynTaskNew(context, statusRequest, my_object, MethodSelection.STATUS, switchBoard.IP);
@@ -1519,6 +1540,97 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
         Log.e("button oof","off");
     }
 
+    private void networkCallN(final ArrayList<Long> needToOFFButtonId) {
+
+
+        final Thread t3 = new Thread() {
+            public void run() {
+                try {
+//                    gate.await();
+                    thread1ForOFFButtonFromMode(needToOFFButtonId);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        t3.start();
+
+    }
+
+    private SwitchButton getSingleButton(String buttonId )
+    {
+        // access by id
+        return new Select().from(SwitchButton.class).where("id = ?", buttonId ).executeSingle() ;
+    }
+
+    SwitchBoard getBoardById(Long boardId )
+    {
+        return new Select().from(SwitchBoard.class).where("id = ?", boardId ).executeSingle();
+    }
+
+    private void thread1ForOFFButtonFromMode(ArrayList<Long> needToOFFButtonId) {
+
+        Log.e(TAG, "t3: thread1ForOFFButtonFromMode" );
+
+        if( needToOFFButtonId.size() > 0)
+        {
+//            int halfCount = needToOFFButtonId.size() / 2;
+            for (int count = 0; count <= needToOFFButtonId.size(); count++) {
+                Long buttonId = needToOFFButtonId.get(count);
+
+                SwitchButton singleButton = getSingleButton(String.valueOf(buttonId));
+                int switchButtonPosition = singleButton.SwitchButtonPosition;
+                String roomId = String.valueOf(singleButton.RoomId);
+                int action = 1; // 0 say ON and 1 say OFF
+                SwitchBoard switchBoard = getBoardById(singleButton.SwitchBoardId);
+                String IP = switchBoard.IP;
+
+                if (IP != null) {
+
+                    if( switchBoard.IP != null )
+                    {
+                        Log.e("IP" , switchBoard.IP ) ;
+                        int new_position= switchButtonPosition;
+
+                        String requestString =  "*ACT," + roomId + "," + ++new_position + "," + action + "#" ;
+
+                        CommonAsynTaskNew asynTask = new CommonAsynTaskNew( context,requestString , my_object , MethodSelection.BUTTON_CLICK ,switchBoard.IP);
+                        if(Build.VERSION.SDK_INT >= 11/*HONEYCOMB*/)
+                        {
+                            asynTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                        } else {
+                            asynTask.execute();
+                        }
+                    }else
+                    {
+                        Toast.makeText(context, "Please restart App", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }else
+                {
+                    Log.e(TAG, "thread1ForOFFButtonFromMode IP is null");
+                }
+            }
+        }
+
+        /////////////////////update in database//////////////////////
+
+        List<SwitchButton> switchButtons = getAllButton();
+        for (SwitchButton button : switchButtons) {
+            button.is_on = false;
+            button.save();
+        }
+
+
+    }
+
+        private List<SwitchButton> getAllButtonN(Long roomId)
+    {
+        //  order by id
+        return new Select().from( SwitchButton.class ).where("RoomId = ?", roomId ).orderBy("id ASC").execute() ;
+    }
     private List<SwitchButton> getAllButton()
     {
         //  order by id

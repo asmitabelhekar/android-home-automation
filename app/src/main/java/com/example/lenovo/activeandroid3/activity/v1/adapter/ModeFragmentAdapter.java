@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -27,9 +28,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.lenovo.activeandroid3.R;
+import com.example.lenovo.activeandroid3.activity.ResponseInterfaceNew;
 import com.example.lenovo.activeandroid3.activity.v1.activity.V1MainActivity;
 import com.example.lenovo.activeandroid3.activity.v1.interfaces.ModeOnOffInterface;
+import com.example.lenovo.activeandroid3.activity.v1.utils.MethodSelection;
 import com.example.lenovo.activeandroid3.activity.v1.utils.ThreadUtil;
+import com.example.lenovo.activeandroid3.asyntask.CommonAsynTaskNew;
 import com.example.lenovo.activeandroid3.dbModel.ModeNetworkCallDbModel;
 import com.example.lenovo.activeandroid3.dbModel.ModelNewDbModel;
 import com.example.lenovo.activeandroid3.dbModel.ModesActivityDbModel;
@@ -64,7 +68,7 @@ import java.util.concurrent.CyclicBarrier;
  * Created by akshay on 18/5/18.
  */
 
-public class ModeFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ModeOnOffInterface
+public class ModeFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ModeOnOffInterface, ResponseInterfaceNew
 {
     String TAG = "ModeFragmentAdapter" ;
     Context context ;
@@ -84,6 +88,8 @@ public class ModeFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
     boolean statusOfModeWhileEditingTheMode ;
     int position = -1 ;
     Mode modeStatusOnTryToEdit ;
+
+    ModeFragmentAdapter my_object = this;
 
     public ModeFragmentAdapter(Context context)
     {
@@ -573,48 +579,66 @@ public class ModeFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
 
                 if (IP != null)
                 {
+                        if( switchBoard.IP != null )
+                        {
+                            Log.e("IP" , switchBoard.IP ) ;
+                            int new_position= switchButtonPosition;
+
+                            String requestString =  "*ACT," + roomId + "," + ++new_position + "," + action + "#" ;
+
+                            CommonAsynTaskNew asynTask = new CommonAsynTaskNew( context,requestString , my_object , MethodSelection.BUTTON_CLICK ,switchBoard.IP);
+                            if(Build.VERSION.SDK_INT >= 11/*HONEYCOMB*/)
+                            {
+                                asynTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                            } else {
+                                asynTask.execute();
+                            }
+                        }else
+                        {
+                            Toast.makeText(context, "Please restart App", Toast.LENGTH_SHORT).show();
+                        }
 
 //                Log.e(TAG, "thread2ForOFFButtonFromMode buttonId " + singleButton.getId());
 
-                    Socket client = null;
-                    PrintStream printStream = null;
-                    Scanner scanner = null;
-                    try {
-
-                        client = new Socket();
-                        client.connect(new InetSocketAddress(IP, Constants.PORT), ThreadUtil.timeout);
-                        client.setSoTimeout(ThreadUtil.timeout);
-
-                        scanner = new Scanner(client.getInputStream());
-
-                        printStream = new PrintStream(client.getOutputStream());
-
-                        printStream.println("*ACT," + roomId + "," + switchButtonPosition + "," + action + "#");
-
-                        String respons = null ;
-                        if( scanner.hasNext() ) {
-                            respons = scanner.nextLine();
-                        }
-
-                        Log.e(TAG, "thread2ForOFFButtonFromMode Response : " + respons);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-
-                        if (printStream != null)
-                            printStream.close();
-
-                        if (scanner != null)
-                            scanner.close();
-
-                        if (client != null)
-                            try {
-                                client.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                    }
+//                    Socket client = null;
+//                    PrintStream printStream = null;
+//                    Scanner scanner = null;
+//                    try {
+//
+//                        client = new Socket();
+//                        client.connect(new InetSocketAddress(IP, Constants.PORT), ThreadUtil.timeout);
+//                        client.setSoTimeout(ThreadUtil.timeout);
+//
+//                        scanner = new Scanner(client.getInputStream());
+//
+//                        printStream = new PrintStream(client.getOutputStream());
+//
+//                        printStream.println("*ACT," + roomId + "," + switchButtonPosition + "," + action + "#");
+//
+//                        String respons = null ;
+//                        if( scanner.hasNext() ) {
+//                            respons = scanner.nextLine();
+//                        }
+//
+//                        Log.e(TAG, "thread2ForOFFButtonFromMode Response : " + respons);
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    } finally {
+//
+//                        if (printStream != null)
+//                            printStream.close();
+//
+//                        if (scanner != null)
+//                            scanner.close();
+//
+//                        if (client != null)
+//                            try {
+//                                client.close();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                    }
                 }else
                 {
                     Log.e(TAG, "thread2ForOFFButtonFromMode IP is null");
@@ -642,46 +666,70 @@ public class ModeFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
 
                 if (IP != null) {
 
+
+                    if( switchBoard.IP != null )
+                    {
+                        Log.e("IP" , switchBoard.IP ) ;
+                        int new_position= switchButtonPosition;
+
+                        String requestString =  "*ACT," + roomId + "," + ++new_position + "," + action + "#" ;
+
+                        CommonAsynTaskNew asynTask = new CommonAsynTaskNew( context,requestString , my_object , MethodSelection.BUTTON_CLICK ,switchBoard.IP);
+                        if(Build.VERSION.SDK_INT >= 11/*HONEYCOMB*/)
+                        {
+                            asynTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                        } else {
+                            asynTask.execute();
+                        }
+                    }else
+                    {
+                        Toast.makeText(context, "Please restart App", Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+
+
 //                Log.e(TAG, "thread1ForONButtonFromMode buttonId " + singleButton.getId());
 
-                    Socket client = null;
-                    PrintStream printStream = null;
-                    Scanner scanner = null;
-                    try {
-
-                        client = new Socket();
-                        client.connect(new InetSocketAddress(IP, Constants.PORT), ThreadUtil.timeout);
-                        client.setSoTimeout(ThreadUtil.timeout);
-
-                        scanner = new Scanner(client.getInputStream());
-
-                        printStream = new PrintStream(client.getOutputStream());
-
-                        printStream.println("*ACT," + roomId + "," + switchButtonPosition + "," + action + "#");
-
-                        String respons = null ;
-                        if( scanner.hasNext() ) {
-                            respons = scanner.nextLine();
-                        }
-                        Log.e(TAG, "thread1ForOFFButtonFromMode Response : " + respons);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-
-                        if (printStream != null)
-                            printStream.close();
-
-                        if (scanner != null)
-                            scanner.close();
-
-                        if (client != null)
-                            try {
-                                client.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                    }
+//                    Socket client = null;
+//                    PrintStream printStream = null;
+//                    Scanner scanner = null;
+//                    try {
+//
+//                        client = new Socket();
+//                        client.connect(new InetSocketAddress(IP, Constants.PORT), ThreadUtil.timeout);
+//                        client.setSoTimeout(ThreadUtil.timeout);
+//
+//                        scanner = new Scanner(client.getInputStream());
+//
+//                        printStream = new PrintStream(client.getOutputStream());
+//
+//                        printStream.println("*ACT," + roomId + "," + switchButtonPosition + "," + action + "#");
+//
+//                        String respons = null ;
+//                        if( scanner.hasNext() ) {
+//                            respons = scanner.nextLine();
+//                        }
+//                        Log.e(TAG, "thread1ForOFFButtonFromMode Response : " + respons);
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    } finally {
+//
+//                        if (printStream != null)
+//                            printStream.close();
+//
+//                        if (scanner != null)
+//                            scanner.close();
+//
+//                        if (client != null)
+//                            try {
+//                                client.close();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                    }
                 }else
                 {
                     Log.e(TAG, "thread1ForOFFButtonFromMode IP is null");
@@ -712,47 +760,75 @@ public class ModeFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
                 String IP = switchBoard.IP;
                 if (IP != null) {
 
+
+
+
+                    if( switchBoard.IP != null )
+                    {
+                        Log.e("IP" , switchBoard.IP ) ;
+                        int new_position= switchButtonPosition;
+
+                        String requestString =  "*ACT," + roomId + "," + ++new_position + "," + action + "#" ;
+
+                        CommonAsynTaskNew asynTask = new CommonAsynTaskNew( context,requestString , my_object , MethodSelection.BUTTON_CLICK ,switchBoard.IP);
+                        if(Build.VERSION.SDK_INT >= 11/*HONEYCOMB*/)
+                        {
+                            asynTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                        } else {
+                            asynTask.execute();
+                        }
+                    }else
+                    {
+                        Toast.makeText(context, "Please restart App", Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+
+
+
+
 //                Log.e(TAG, "thread1ForONButtonFromMode buttonId " + singleButton.getId());
 
-                    Socket client = null;
-                    PrintStream printStream = null;
-                    Scanner scanner = null;
-                    try {
-
-                        client = new Socket();
-                        client.connect(new InetSocketAddress(IP, Constants.PORT), ThreadUtil.timeout);
-                        client.setSoTimeout(ThreadUtil.timeout);
-
-                        scanner = new Scanner(client.getInputStream());
-
-                        printStream = new PrintStream(client.getOutputStream());
-
-                        printStream.println("*ACT," + roomId + "," + switchButtonPosition + "," + action + "#");
-
-                        String respons = null ;
-                        if( scanner.hasNext() ) {
-                            respons = scanner.nextLine();
-                        }
-
-                        Log.e(TAG, "thread1ForONButtonFromMode Response : " + respons);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-
-                        if (printStream != null)
-                            printStream.close();
-
-                        if (scanner != null)
-                            scanner.close();
-
-                        if (client != null)
-                            try {
-                                client.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                    }
+//                    Socket client = null;
+//                    PrintStream printStream = null;
+//                    Scanner scanner = null;
+//                    try {
+//
+//                        client = new Socket();
+//                        client.connect(new InetSocketAddress(IP, Constants.PORT), ThreadUtil.timeout);
+//                        client.setSoTimeout(ThreadUtil.timeout);
+//
+//                        scanner = new Scanner(client.getInputStream());
+//
+//                        printStream = new PrintStream(client.getOutputStream());
+//
+//                        printStream.println("*ACT," + roomId + "," + switchButtonPosition + "," + action + "#");
+//
+//                        String respons = null ;
+//                        if( scanner.hasNext() ) {
+//                            respons = scanner.nextLine();
+//                        }
+//
+//                        Log.e(TAG, "thread1ForONButtonFromMode Response : " + respons);
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    } finally {
+//
+//                        if (printStream != null)
+//                            printStream.close();
+//
+//                        if (scanner != null)
+//                            scanner.close();
+//
+//                        if (client != null)
+//                            try {
+//                                client.close();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                    }
                 }else
                 {
                     Log.e(TAG, "thread2ForONButtonFromMode IP is null");
@@ -785,45 +861,66 @@ public class ModeFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
 
                     Log.e(TAG, "thread1ForONButtonFromMode buttonId " + singleButton.getId());
 
-                    Socket client = null;
-                    PrintStream printStream = null;
-                    Scanner scanner = null;
-                    try {
 
-                        client = new Socket();
-                        client.connect(new InetSocketAddress(IP, Constants.PORT), ThreadUtil.timeout);
-                        client.setSoTimeout(ThreadUtil.timeout);
+                    if( switchBoard.IP != null )
+                    {
+                        Log.e("IP" , switchBoard.IP ) ;
+                        int new_position= switchButtonPosition;
 
-                        scanner = new Scanner(client.getInputStream());
+                        String requestString =  "*ACT," + roomId + "," + ++new_position + "," + action + "#" ;
 
-                        printStream = new PrintStream(client.getOutputStream());
-
-                        printStream.println("*ACT," + roomId + "," + switchButtonPosition + "," + action + "#");
-
-                        String respons = null ;
-                        if( scanner.hasNext() ) {
-                            respons = scanner.nextLine();
+                        CommonAsynTaskNew asynTask = new CommonAsynTaskNew( context,requestString , my_object , MethodSelection.BUTTON_CLICK ,switchBoard.IP);
+                        if(Build.VERSION.SDK_INT >= 11/*HONEYCOMB*/)
+                        {
+                            asynTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                        } else {
+                            asynTask.execute();
                         }
-
-                        Log.e(TAG, "thread1ForONButtonFromMode Response : " + respons);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } finally {
-
-                        if (printStream != null)
-                            printStream.close();
-
-                        if (scanner != null)
-                            scanner.close();
-
-                        if (client != null)
-                            try {
-                                client.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                    }else
+                    {
+                        Toast.makeText(context, "Please restart App", Toast.LENGTH_SHORT).show();
                     }
+
+
+//                    Socket client = null;
+//                    PrintStream printStream = null;
+//                    Scanner scanner = null;
+//                    try {
+//
+//                        client = new Socket();
+//                        client.connect(new InetSocketAddress(IP, Constants.PORT), ThreadUtil.timeout);
+//                        client.setSoTimeout(ThreadUtil.timeout);
+//
+//                        scanner = new Scanner(client.getInputStream());
+//
+//                        printStream = new PrintStream(client.getOutputStream());
+//
+//                        printStream.println("*ACT," + roomId + "," + switchButtonPosition + "," + action + "#");
+//
+//                        String respons = null ;
+//                        if( scanner.hasNext() ) {
+//                            respons = scanner.nextLine();
+//                        }
+//
+//                        Log.e(TAG, "thread1ForONButtonFromMode Response : " + respons);
+//
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    } finally {
+//
+//                        if (printStream != null)
+//                            printStream.close();
+//
+//                        if (scanner != null)
+//                            scanner.close();
+//
+//                        if (client != null)
+//                            try {
+//                                client.close();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                    }
                 }else
                 {
                     Log.e(TAG, "thread1ForONButtonFromMode IP is null");
@@ -916,46 +1013,69 @@ public class ModeFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
             if (IP != null && !IP.isEmpty())
             {
                 Log.e(TAG, "thread3ForOFFButtonFromMode buttonId and IP" + singleButton.getId()+"  "+IP);
-                Socket client = null;
-                PrintStream printStream = null;
-                Scanner scanner = null;
-                try {
-                    client = new Socket();
-                    client.connect(new InetSocketAddress(IP, Constants.PORT), ThreadUtil.timeout);
-                    client.setSoTimeout(ThreadUtil.timeout);
 
-                    scanner = new Scanner(client.getInputStream());
+                if( switchBoard.IP != null )
+                {
+                    Log.e("IP" , switchBoard.IP ) ;
+                    int new_position= switchButtonPosition;
 
-                    printStream = new PrintStream(client.getOutputStream());
+                    String requestString =  "*ACT," + roomId + "," + ++new_position + "," + action + "#" ;
 
-                    printStream.println("*ACT," + roomId + "," + switchButtonPosition + "," + action + "#");
-
-                    String respons = null  ;
-                    if( scanner.hasNext() ) {
-                        respons = scanner.nextLine();
+                    CommonAsynTaskNew asynTask = new CommonAsynTaskNew( context,requestString , my_object , MethodSelection.BUTTON_CLICK ,switchBoard.IP);
+                    if(Build.VERSION.SDK_INT >= 11/*HONEYCOMB*/)
+                    {
+                        asynTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                    } else {
+                        asynTask.execute();
                     }
-
-                    Log.e(TAG, "thread3ForOFFButtonFromMode Response : " + respons);
-
-                } catch (IOException e) {
-                    Log.e(TAG, "EXCEP in thread3ForOFFButtonFromMode while connecting to" + IP);
-                    e.printStackTrace();
-                } finally {
-
-                    if (printStream != null)
-                        printStream.close();
-
-                    if (scanner != null)
-                        scanner.close();
-
-                    if (client != null)
-                        try {
-                            client.close();
-                        } catch (IOException e)
-                        {
-                            e.printStackTrace();
-                        }
+                }else
+                {
+                    Toast.makeText(context, "Please restart App", Toast.LENGTH_SHORT).show();
                 }
+
+
+
+
+//                Socket client = null;
+//                PrintStream printStream = null;
+//                Scanner scanner = null;
+//                try {
+//                    client = new Socket();
+//                    client.connect(new InetSocketAddress(IP, Constants.PORT), ThreadUtil.timeout);
+//                    client.setSoTimeout(ThreadUtil.timeout);
+//
+//                    scanner = new Scanner(client.getInputStream());
+//
+//                    printStream = new PrintStream(client.getOutputStream());
+//
+//                    printStream.println("*ACT," + roomId + "," + switchButtonPosition + "," + action + "#");
+//
+//                    String respons = null  ;
+//                    if( scanner.hasNext() ) {
+//                        respons = scanner.nextLine();
+//                    }
+//
+//                    Log.e(TAG, "thread3ForOFFButtonFromMode Response : " + respons);
+//
+//                } catch (IOException e) {
+//                    Log.e(TAG, "EXCEP in thread3ForOFFButtonFromMode while connecting to" + IP);
+//                    e.printStackTrace();
+//                } finally {
+//
+//                    if (printStream != null)
+//                        printStream.close();
+//
+//                    if (scanner != null)
+//                        scanner.close();
+//
+//                    if (client != null)
+//                        try {
+//                            client.close();
+//                        } catch (IOException e)
+//                        {
+//                            e.printStackTrace();
+//                        }
+//                }
             } else {
                 Log.e(TAG, "thread3ForOFFButtonFromMode IP is null for board "+switchBoard.BoardName);
             }
@@ -1282,6 +1402,25 @@ public class ModeFragmentAdapter  extends RecyclerView.Adapter<RecyclerView.View
         notifyDataSetChanged();
     }
 
+    @Override
+    public void getResponse(String response, MethodSelection interface_method, String IP) {
+        try {
+
+            Log.e(TAG, "getResponse: "+response );
+
+            switch ( interface_method ) {
+
+                case BUTTON_CLICK :
+//                    this.buttonClickResponse(response);
+                    break;
+
+            }
+
+        }catch (Exception e) {
+
+            Log.e( "in getResponse" , e.getMessage() );
+        }
+    }
 
 
     //    Classes
