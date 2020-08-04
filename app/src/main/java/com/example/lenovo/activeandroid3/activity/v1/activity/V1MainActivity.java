@@ -1,5 +1,6 @@
 package com.example.lenovo.activeandroid3.activity.v1.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -78,6 +79,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 
 public class V1MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ResponseInterfaceNew {
 
@@ -1542,19 +1544,59 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 
     private void networkCallN(final ArrayList<Long> needToOFFButtonId) {
 
+        final CyclicBarrier gate = new CyclicBarrier(5);
 
-        final Thread t3 = new Thread() {
+        final Thread t1 = new Thread() {
             public void run() {
                 try {
-//                    gate.await();
+                    gate.await();
+
                     thread1ForOFFButtonFromMode(needToOFFButtonId);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         };
 
-        t3.start();
+
+        final Thread t2 = new Thread() {
+            public void run() {
+                try {
+                    gate.await();
+                    thread2ForOFFButtonFromMode(needToOFFButtonId);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+
+
+
+
+        Thread t4 = new Thread()
+        {
+            public void run() {
+                try {
+                    String TAG1 = " t5  ";
+                    t1.join();
+                    t2.join();
+
+
+                } catch (Exception e) {
+                    Log.e(TAG, " excep in Thread11" + e.getMessage());
+                }
+            }
+        };
+
+        t1.start();
+        t2.start();
+        t4.start();
+
+
 
     }
 
@@ -1575,8 +1617,66 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 
         if( needToOFFButtonId.size() > 0)
         {
-//            int halfCount = needToOFFButtonId.size() / 2;
-            for (int count = 0; count <= needToOFFButtonId.size(); count++) {
+            int halfCount = needToOFFButtonId.size() / 2;
+            for (int count = 0; count <= halfCount; count++) {
+                Long buttonId = needToOFFButtonId.get(count);
+
+                SwitchButton singleButton = getSingleButton(String.valueOf(buttonId));
+                int switchButtonPosition = singleButton.SwitchButtonPosition;
+                String roomId = String.valueOf(singleButton.RoomId);
+                int action = 1; // 0 say ON and 1 say OFF
+                SwitchBoard switchBoard = getBoardById(singleButton.SwitchBoardId);
+                String IP = switchBoard.IP;
+
+                if (IP != null) {
+
+                    if( switchBoard.IP != null )
+                    {
+                        Log.e("IP" , switchBoard.IP ) ;
+                        int new_position= switchButtonPosition;
+
+                        String requestString =  "*ACT," + roomId + "," + ++new_position + "," + action + "#" ;
+
+                        CommonAsynTaskNew asynTask = new CommonAsynTaskNew( context,requestString , my_object , MethodSelection.BUTTON_CLICK ,switchBoard.IP);
+                        if(Build.VERSION.SDK_INT >= 11/*HONEYCOMB*/)
+                        {
+                            asynTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                        } else {
+                            asynTask.execute();
+                        }
+                    }else
+                    {
+                        Toast.makeText(context, "Please restart App", Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }else
+                {
+                    Log.e(TAG, "thread1ForOFFButtonFromMode IP is null");
+                }
+            }
+        }
+
+        /////////////////////update in database//////////////////////
+
+//        List<SwitchButton> switchButtons = getAllButton();
+//        for (SwitchButton button : switchButtons) {
+//            button.is_on = false;
+//            button.save();
+//        }
+
+
+    }
+
+
+    private void thread2ForOFFButtonFromMode(ArrayList<Long> needToOFFButtonId) {
+
+        Log.e(TAG, "t3: thread1ForOFFButtonFromMode" );
+
+        if( needToOFFButtonId.size() > 0)
+        {
+            int halfCount = needToOFFButtonId.size() / 2;
+            for (int count = halfCount+1; count <= needToOFFButtonId.size(); count++) {
                 Long buttonId = needToOFFButtonId.get(count);
 
                 SwitchButton singleButton = getSingleButton(String.valueOf(buttonId));
@@ -1625,6 +1725,7 @@ public class V1MainActivity extends AppCompatActivity implements NavigationView.
 
 
     }
+
 
         private List<SwitchButton> getAllButtonN(Long roomId)
     {
